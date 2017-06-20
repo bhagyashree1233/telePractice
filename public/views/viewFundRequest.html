@@ -1,0 +1,44 @@
+<div class="well well-sm listHeader">Fund Requests</div>
+
+ <div class="table-responsive" style="max-height:58vh;overflow: auto;" when-scrolled="loadFundRequestList()">
+      
+  <table class="table table-bordered">
+    <thead>
+      <tr style="background:orange">
+        <th>Requester Id</th>
+        <th>Payment Date</th>
+        <th>Amount</th>
+        <th>Mode</th>
+        <th>Deposit Time</th>
+        <th>Bank Name</th>
+        <th>Bank Charge</th>
+        <th>Remarks</th>
+        <th>Requested Date</th>
+        <th>Response Message</th>
+        <th>Status</th>
+        <th>Response Date</th>
+        <th>Action</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="request in recievedFundRequestList">
+        <td>{{request.RequestSenderId}}</td>
+        <td>{{request.PaymentDate | date:'dd-MM-yyyy'}}</td>  
+        <td>{{request.Amount}}</td>  
+        <td>{{request.PaymentMode}}</td>  
+        <td>{{request.DepositTime}}</td>
+        <td>{{request.BankName}}</td>  
+        <td>{{request.BankCharge}}</td>  
+        <td>{{request.Remarks}}</td>
+        <td>{{request.RequestDate | date:'dd-MM-yyyy HH:mm:ss'}}</td>  
+        <td>{{request.ResponseMessage}}</td>  
+        <td>{{request.Status}}</td>
+        <td ng-if="request.ResponseDate">{{request.ResponseDate | date:'dd-MM-yyyy HH:mm:ss'}}</td> <td ng-if="!request.ResponseDate"></td>  
+        <td><a href="" ng-click="respondFundRequest(request)">Respond</a></td>      
+
+      </tr>  
+    </tbody>
+  </table>
+  </div>  
+  <p style="text-align:center;" ng-show="loadingFundRequest">Loading...</p>

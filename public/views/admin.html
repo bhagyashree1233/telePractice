@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+  		
+</head>
+<body>
+
+  <img src="..\img\Logo.jpg"style="width:18vmin;height:18vmin;"></img>  
+
+<div class="curUserDetails">
+  <span>Admin id: {{curAdminId}}</span><br/>
+  <span>Main Balance : {{mainBalance}}</span><br/>
+  <span>Name : {{curUser.Name}}</span><br/>
+  <span>Balance: {{balanceAmount}} Rs</span>
+</div>   
+
+<nav class="navbar navbar-default myTopNav1">
+
+    <div class="navbar-header myTopNav1-header1">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myAdminNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <!--<a class="navbar-brand" href="#">Home</a>-->
+    </div>
+    <div class="collapse navbar-collapse myNavbar1-collapse1" id="myAdminNavbar">
+      <ul class="nav navbar-nav navbar myTopNav1-nav1">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Master Dealer<span class="caret"></span></a>
+          <ul class="dropdown-menu myTopNav1-dropdown-menu1">
+           <li><a href="#" ng-click="navClick('addMasterDealer')" >Add Master Dealer</a></li>
+           <li><a href="#" ng-click="getListOfMasterDealers('listOfMasterDealers')">List of Master Dealers</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Scheme and Retailer type<span class="caret"></span></a>
+          <ul class="dropdown-menu myTopNav1-dropdown-menu1">
+           <li><a href="#" ng-click="getListOfRetailerType()">Add New Retailer Type</a></li>
+           <li><a href="#" ng-click="getAllScheme()">Add New Scheme</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Report<span class="caret"></span></a>
+          <ul class="dropdown-menu myTopNav1-dropdown-menu1">
+           <li><a href="#" ng-click="navClick('accountReportMdD')">Account Reports</a></li>
+       <!--    <li><a href="#" ng-click="navClick('creditReportMdD')">Credit Reports</a></li>  -->
+           <li><a href="#" ng-click="navClick('checkStatusMdDR')">Check Status</a></li>
+           <li><a href="#" ng-click="navClick('revertTransactions')">Reverted Transactions</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Stock Request<span class="caret"></span></a>
+          <ul class="dropdown-menu myTopNav1-dropdown-menu1">
+           <li><a href="#" ng-click="getRecievedFundRequestList()">View Stock Requests</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Complain & Account Setting<span class="caret"></span></a>
+          <ul class="dropdown-menu myTopNav1-dropdown-menu1">
+    <!--    <li><a href="#" ng-click="navClick('changePasswordMdDR')">Change Password</a></li> -->
+            <li><a href="#" ng-click="navClick('bankDetailsMdDR')">Bank Account Detail</a></li>
+            <li><a href="#" ng-click="getComplains()">View Complains</a></li>
+          </ul>
+        </li>
+        <li><a href="" ng-click="logout()">Logout</a></li>
+      </ul>
+    </div>
+</nav>
+  <span ng-if="selTempleteUrl != ''">
+    <div data-ng-include="selTempleteUrl" style="width:100%;height:100%;"></div>
+  </span> 
+  </div>
+</html>  

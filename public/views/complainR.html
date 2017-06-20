@@ -1,0 +1,68 @@
+
+<div class="well">Add Complain</div>
+   
+<form class="form-group" >
+
+   <div class="form-group">
+      <label for="sel1" >Subject</label>
+      <select class="form-control" id="sel1" ng-model="complain.Subject">
+        <option value="">---select---</option>
+        <option ng-value="'rechargeid'">RechargeId</option>
+        <option ng-value="'other'">Other</option>
+      </select>
+   </div>
+
+   <div class="form-group" ng-if="complain.Subject=='rechargeid'">    
+      <label for="sel1" >Order Id:</label>
+      <input class="form-control" type="number" numbers-only name="rechargeId" ng-model="complain.OrderId">
+   </div>
+
+   <div class="form-group">    
+      <label for="sel1" >Message:</label>
+      <textarea class="form-control" ng-model="complain.Message" required></textarea>
+   </div>
+
+   <div class="form-group">    
+      <button type="button" class="btn btn-primary" ng-click="sendComplain(complain)">Submit</button>
+      <button type="button" class="btn btn-danger" ng-click="complain={}">Cancel</button>
+   </div>
+</form>
+
+
+<div class="table-responsive" style="max-height:52vh;overflow: auto;" when-scrolled="loadComplains()">
+<table class="table table-bordered">
+    <thead>
+      <tr style="background:orange">
+        <th>Complain Id</th>
+        <th>Message</th>
+        <th>Order ID</th>
+        <th>Number</th>
+        <th>Company</th>
+        <th>Recharge Type</th>
+        <th>Amount</th>
+        <th>Recharge Status</th>
+        <th>Recharge Date</th>
+        <th>Solve Date</th>
+        <th>Response Message</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="complain in complainsList">
+        <td>{{complain.ComplainId}}</td>
+        <td>{{complain.Message}}</td>
+        <td ng-if="complain.OrderId">{{complain.OrderId}}</td><td ng-if="!complain.OrderId">--</td>
+        <td ng-if="complain.Number">{{complain.Number}}</td><td ng-if="!complain.Number">--</td>
+        <td ng-if="complain.Company">{{complain.Company}}</td><td ng-if="!complain.Company">--</td>
+        <td ng-if="complain.RechargeType">{{complain.RechargeType}}</td><td ng-if="!complain.RechargeType">--</td>
+        <td ng-if="complain.RechargeAmount">{{complain.RechargeAmount}}</td><td ng-if="!complain.RechargeAmount">--</td>
+        <td ng-if="complain.RechargeStatus">{{complain.RechargeStatus}}</td><td ng-if="!complain.RechargeStatus">--</td>
+        <td ng-if="complain.RechargeDate">{{complain.RechargeDate | date:'dd-MM-yyyy HH:mm:ss '}}</td><td ng-if="!complain.RechargeDate">--</td>
+        <td ng-if="complain.SolveDate">{{complain.SolveDate | date:'dd-MM-yyyy HH:mm:ss '}}</td><td ng-if="!complain.SolveDate"></td>
+        <td>{{complain.ResponseMessage}}</td>
+        <td>{{complain.Status}}</td>
+      </tr>
+    </tbody>
+    
+  </table>
+</div>           

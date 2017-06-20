@@ -1,0 +1,42 @@
+<div class="well well-sm listHeadermoney">Money Transfer    
+ <div class="listHeaderback">
+<form class="form-horizontal"  ng-submit="transferMoney()">
+    <div class="form-group">
+      <label class="control-label col-sm-6" for="Scheme Name">Name:</label>
+      <div class="col-sm-3">
+       <p>{{curUser.Name}}</p>
+     </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-6" for="adddress">Address:</label>
+      <div class="col-sm-3">
+       <p>{{curUser.Address}}</p>
+     </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-6" for="mobile">Mobile No:</label>
+      <div class="col-sm-3">
+       <p>{{curUser.Mobile}}</p>
+     </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-6" for="balance">Account Balance:</label>
+      <div class="col-sm-3">
+       <p>{{balanceAmount}}</p>
+     </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-6" for="Scheme Name">Tranfer Amount:</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" ng-model="transferDetails.Amount" numbers-only limit-char limit="10" name="tAmount" required>
+     </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-6 col-sm-6">
+        <button type="submit" class="btn btn-default" style="margin-right:1vh;">Submit</button><button type="Cancel" class="btn btn-default" ng-click="transferDetails={};">Cancel</button>
+      </div>
+    </div>
+  </form>
+  <p style="color:red;">{{transferMoneyErr}}</p>
+  </div> 
+</div>

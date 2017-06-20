@@ -1,0 +1,39 @@
+<div class="well well-sm listHeader">Complain Respond</div>     
+ 
+<form class="form-horizontal"  ng-submit="sendComplainResponse(complainResponse)">
+    <div class="form-group">
+      <label class="control-label col-sm-6" for="Scheme Name">Message:</label>
+      <div class="col-sm-3">
+       <p>{{complainResponse.Message}}</p>
+     </div>
+    </div>
+    <div class="form-group" ng-if="complainResponse.OrderId">
+      <label class="control-label col-sm-6" for="adddress">Order Id:</label>
+      <div class="col-sm-3">
+       <p>{{complainResponse.OrderId}}</p>
+     </div>
+    </div>
+    <div class="form-group" ng-if="complainResponse.Number">
+      <label class="control-label col-sm-6" for="mobile">Number:</label>
+      <div class="col-sm-3">
+       <p>{{complainResponse.Number}}</p>
+     </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-6" for="Scheme Name">Response Message:</label>
+      <div class="col-sm-3">
+        <textarea ng-model="complainResponse.ResponseMessage" required></textarea>
+     </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-6" for="status">Status:</label>
+      <div class="col-sm-3">
+       <input type="text" ng-model="complainResponse.Status" required></input>
+     </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-6">
+        <button type="submit" class="btn btn-default">Submit</button><span><button type="Cancel" class="btn btn-default" ng-click="getComplains()">Cancel</button></span>
+      </div>
+    </div>
+  </form>

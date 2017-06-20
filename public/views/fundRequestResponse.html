@@ -1,0 +1,39 @@
+<div class="well well-sm listHeader">Fund Request Response</div>     
+ 
+<form class="form-horizontal"  ng-submit="sendFundRequestResponse(fundRequestResponse)">
+    <div class="form-group">
+      <label class="control-label col-sm-6" for="Scheme Name">Bank Name:</label>
+      <div class="col-sm-3">
+       <p>{{fundRequestResponse.BankName}}</p>
+     </div>
+    </div>
+    <div class="form-group" ng-if="complainResponse.OrderId">
+      <label class="control-label col-sm-6" for="adddress">Amount:</label>
+      <div class="col-sm-3">
+       <p>{{fundRequestResponse.Amount}}</p>
+     </div>
+    </div>
+    <div class="form-group" ng-if="complainResponse.Number">
+      <label class="control-label col-sm-6" for="mobile">Payment Date:</label>
+      <div class="col-sm-3">
+       <p>{{fundRequestResponse.PaymentDate}}</p>
+     </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-6" for="Scheme Name">Response Message:</label>
+      <div class="col-sm-3">
+        <textarea ng-model="fundRequestResponse.ResponseMessage" required></textarea>
+     </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-6" for="status">Status:</label>
+      <div class="col-sm-3">
+       <input type="text" ng-model="fundRequestResponse.Status" required></input>
+     </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-6">
+        <input type="submit" value="Submit" class="btn btn-default"></input><span><button type="Cancel" class="btn btn-default">Cancel</button></span>
+      </div>
+    </div>
+  </form>

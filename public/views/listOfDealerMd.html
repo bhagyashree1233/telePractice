@@ -1,0 +1,53 @@
+
+<div class="well well-sm listHeader">List of Dealers</div>
+<div class="table-responsive" style="max-height:55vh;overflow: auto;" when-scrolled="loadDealers()"> 
+<table class="table table-bordered">
+    <thead class="tableList">
+      <tr>
+        <th>Id</th>
+        <th>D No</th>
+        <th>D Name</th>
+        <th>Mobile</th>
+        <th>State</th>
+        <th>City</th>
+        <th>Email ID</th>
+        <th>Balance</th>
+        <th>Login</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+  <!--    
+      <tr>
+        <td>1</td>
+        <td>56779</td>
+        <td>John</td>
+        <td>9876654321</td>
+        <td>Karnataka</td>
+        <td>Bangalore</td>
+        <td>john@example.com</td>
+        <td>100</td>
+        <td>Active</td>
+        <td>Print/save</td>
+        <td><span class="btn glyphicon glyphicon-pencil"></span></td>
+        <td><span class="btn glyphicon glyphicon-trash"></span></td>
+      </tr>
+   -->   
+      <tr ng-repeat="dealer in dealersList">
+        <td>{{$index+1}}</td> 
+        <td>{{dealer.Id}}</td> 
+        <td>{{dealer.Name}}</td>
+        <td>{{dealer.Mobile}}</td>  
+        <td>{{dealer.State}}</td>
+        <td>{{dealer.City}}</td>  
+        <td>{{dealer.EmailId}}</td>  
+        <td>{{dealer.Balance}}</td>
+        <td>{{dealer.LoginStatus}}</td>
+        <td><a href="#" title="Money Transfer" class="btn glyphicon glyphicon-transfer" ng-click="transferMoneyView(dealer)"></a>|<a href="#" title="Revert Last Transaction" class="btn glyphicon glyphicon-repeat" ng-click="revertTransaction(dealer.Id)"></a>|<a href="#" title="Edit" class="btn glyphicon glyphicon-pencil" ng-click="editDealer(dealer)"></a>|<a href="#" title="Delete" class="btn glyphicon glyphicon-trash" ng-click="deleteDealer(dealer)"></a></td>     
+      </tr> 
+    </tbody> 
+  </table>
+ </div>
+
+ <p ng-show="loadingD" style="text-align:center;">Loading...</p>
+ 

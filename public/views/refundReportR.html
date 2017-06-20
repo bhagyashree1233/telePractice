@@ -1,0 +1,54 @@
+
+<div class="well well-sm listHeader">Refund Report</div>
+<p ng-bind="refundReportErr" style="color:red;"></p>
+<form > 
+     <div class="row">
+       <div class="form-group col-xs-3">
+         <label for="sel1" >From Date:</label>
+      <!--   <input type="date" name="fromDate" ng-model="refundReport.FromDate">  -->
+         <input type="text" class="form-control" datepicker="" placeholder="Select From Date" ng-change="refundDateChanged()" ng-model="refundReport.FromDate" required/> 
+      </div>
+      <div class="form-group col-xs-3">    
+         <label for="sel1" >To Date:</label>
+       <!--  <input type="date" name="toDate" ng-model="refundReport.ToDate">  -->
+         <input type="text" class="form-control" datepicker="" placeholder="Select To Date" ng-change="refundDateChanged()" ng-model="refundReport.ToDate" required/> 
+      </div>
+               
+      <button type="button" class="btn btn-success" ng-click="getRefundReport()">Search</button>
+      
+   <!--   <button type="button" class="btn  btn-danger" >Export</button>            -->                     
+   </div>
+</form>
+
+<div class="table-responsive"  style="max-height:52vh;overflow: auto;" when-scrolled="getRefundReport()">  
+<table class="table table-bordered">
+    <thead class="tableList">
+      <tr>
+        <th>Sl No</th>
+        <th>Mobile No</th>
+        <th>Company</th>
+        <th>RechargeType</th>
+        <th>TransactionId</th>
+        <th>RechargeAmount</th>
+        <th>RefundAmount</th>
+        <th>Balance</th>
+        <th>CustomerName</th>
+        <th>RechargeDate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="refundReport in refundReportList">
+        <td>{{$index+1}}</td>
+        <td>{{refundReport.MobileNo}}</td>
+        <td>{{refundReport.Company}}</td>
+        <td>{{refundReport.RechargeType}}</td>
+        <td>{{refundReport.TransactionId}}</td>
+        <td>{{refundReport.RechargeAmount}}</td>
+        <td>{{refundReport.RefundAmount}}</td>
+        <td>{{refundReport.Balance}}</td>
+        <td>{{refundReport.CustomerName}}</td>
+        <td>{{refundReport.RechargeDate | date:'dd-MM-yyyy HH:mm:ss'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>  

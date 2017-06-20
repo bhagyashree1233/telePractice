@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div class="well well-sm listHeader">Master Dealer Registration Form</div>     
+    <p style="font-size:18px;">Personal Information</p>
+    <hr>
+<div class="container">
+  
+  <form class="form-horizontal"  ng-submit="addMasterDealer(newMDealer)">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Distributor Name"><span class="star">*</span>Name:</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" ng-model="newMDealer.Name" limit-char limit="50" name="name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Postal Address"><span class="star"> *</span>Postal Address:</label>
+      <div class="col-sm-3"> 
+          <textarea class="form-control"  ng-model="newMDealer.Address" limit-char limit="255"></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="State"><span class="star"> *</span>State:</label>
+      <div  class="col-sm-3"> 
+    <select class="selectpicker form-control" ng-model="newMDealer.State" ng-change="loadCities(newMDealer.State)">
+      <option value="">--select state--</option>
+      <option ng-repeat="state in statelist">{{state}}</option>
+    </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Mobile No"><span class="star">*</span>Mobile No:</label>
+      <div class="col-sm-3">
+        <input type="tel" class="form-control"  ng-model="newMDealer.Mobile" numbers-only limit-char limit="10" name="mobileNo">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Retailer Type">Retailer Type:</label>
+      <div class="col-sm-3"> 
+    <select class="selectpicker form-control" ng-model="newMDealer.RetailerType">
+            <option value="">--select Retailer Type--</option>
+            <option ng-repeat="retailerType in retailerTypeList" ng-click="newMDealer.retailerType=retailerType.Id">{{retailerType.Name}}</option>
+    </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Pan No">Pan No:</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control"  ng-model="newMDealer.PanNo" numbers-only limit-char limit="15"  name="panNo">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Pin Code"><span class="star"> *</span>Pin Code:</label>
+      <div class="col-sm-3">
+        <input type="tel" class="form-control"  ng-model="newMDealer.PinCode" numbers-only limit-char limit="15" name="pinCode">
+      </div>
+    </div>
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="City/District">City/District:</label>
+      <div class="col-sm-3"> 
+    <select class="selectpicker form-control" ng-model="newMDealer.City" >
+       <option value="">--select City--</option>
+       <option ng-repeat="city in cities">{{city.city}}</option>
+    </select>
+      </div>
+    </div>
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="Landline">Landline:</label>
+      <div class="col-sm-3">
+        <input type="tel" class="form-control" ng-model="newMDealer.LandLine" numbers-only limit-char limit="15" name="Landline">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Email"><span class="star"> * </span>Email:</label>
+      <div class="col-sm-3">
+        <input type="email" class="form-control" ng-model="newMDealer.EmailId"  limit-char limit="50" name="email" >
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Contact Person"><span class="star"> * </span>Contact Person:</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" ng-model="newMDealer.ContactPerson" limit-char limit="50" name="contactPerson" >
+      </div>
+    </div>
+<p style="font-size:20px"><b>Scheme Details</b></p>
+    <hr>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Scheme">Scheme:</label>
+      <div class="col-sm-3"> 
+    <select class="selectpicker form-control"  ng-model="newMDealer.Scheme">
+          
+            <option value="">--select Scheme--</option>
+              <option ng-repeat="scheme in schemeList">{{scheme.Name}}</option>
+    </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Amount">Amount:</label>
+      <div class="col-sm-3">
+        <p>{{newMDealer.Balance}}</p>
+      </div>
+    </div>
+    <div class="form-group" ng-if="!editMode">
+      <label class="control-label col-sm-2" for="Opening Balance">Opening Balance:</label>
+      <div class="col-sm-3">
+        <input type="number" class="form-control"  ng-model="newMDealer.Balance" limit-char limit="13" name="balance">
+      </div>
+    </div>
+    <div class="form-group" ng-if="!editMode">
+      <label class="control-label col-sm-2" for="enterPassword"><span class="star">*</span> Password:</label>
+      <div class="col-sm-3">
+        <input type="password" class="form-control"  ng-model="newMDealer.Password" limit-char limit="25" name="password">
+      </div>
+    </div>
+    <div class="form-group" ng-if="!editMode">
+      <label class="control-label col-sm-2" for="Opening Balance"><span class="star">*</span> Confirm Password:</label>
+      <div class="col-sm-3">
+        <input type="password" class="form-control"  ng-model="newMDealer.Cpassword"  limit-char limit="25" name="cpassword" >
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button><span><button type="Cancel" class="btn btn-default" ng-click="newMDealer={};getListOfMasterDealers('listOfMasterDealers');">Cancel</button></span>
+      </div>
+    </div>
+    <br/>
+    <span class="star" id="masterAddError"> {{masterAddErrMsg}}</span>
+    <p>The field marked with <span class="star">*</span> are mandatory.</p>
+  </form>
+</div>   
+
+</body>
+</html>

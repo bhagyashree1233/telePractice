@@ -1,0 +1,38 @@
+
+<div class="well well-sm listHeader">Check Recharge Status By Recharge ID</div>
+
+ <div>
+    Check Status:<input type="text" numbers-only name="checkStatus" ng-model="txnId" />
+    <button class="btn btn-primary" type="submit" value="submit" ng-click="checkRechargeStatus(txnId)" />
+ </div>
+<div class="well" id="viewRechargeStatus" style="display:none;margin-top:2vh">
+     View Recharge Status
+ </div> 
+
+
+<div class="table-responsive"> 
+<table class="table table-bordered">
+    <thead>
+      <tr style="background:orange">
+        <th>Company</th>
+        <th>Mobile No</th>
+        <th>Amount</th>
+        <th>OrderId</th>
+        <th>Status</th>
+        <th>Date Time</th>
+        <th>Transaction Id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{rStatus.Company}}</td>
+        <td>{{rStatus.MobileNo}}</td>
+        <td>{{rStatus.RechargeAmount}}</td>
+        <td>{{rStatus.OrderId}}</td>
+        <td>{{rStatus.Status}}</td>
+        <td>{{rStatus.RechargeDate | date:'dd-MM-yyyy HH:mm:ss'}}</td>
+        <td>{{rStatus.TransactionId}}</td>
+      </tr>
+    </tbody>  
+  </table>
+ </div> 

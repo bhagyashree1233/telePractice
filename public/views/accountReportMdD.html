@@ -1,0 +1,55 @@
+
+<div class="well well-sm listHeader">Account Ledger Report</div>
+<p ng-bind="accountReportErr" style="color:red;"></p>
+<form  ng-submit="getAccountReport(accountReport)"> 
+     <div class="row">
+       <div class="form-group col-md-3">
+  <!--      <label for="sel1" >From Date:</label><input type="date" name="fromDate" ng-model="accountReport.FromDate">  -->
+        <label for="sel1" >From Date:</label>
+        <input type="text" datepicker="" placeholder="Select From Date" ng-change="datesChanged()" ng-model="accountReport.FromDate" required/> 
+
+      </div>
+      <div class="form-group col-md-3">    
+         <label for="sel1" >To Date:</label>
+         <input type="text" datepicker="" placeholder="Select To Date"  ng-change="datesChanged()" ng-model="accountReport.ToDate" required/> 
+      </div>
+               
+      <input type="submit" value="Search" class="btn btn-success"></input>
+   <!--   <button type="button" class="btn  btn-danger" >Export</button>            -->                     
+   </div>
+</form>
+
+<div class="table-responsive" style="max-height:40vh;overflow: auto;" when-scrolled="getAccountReport()">  
+<table class="table table-bordered">
+    <thead class="tableList">
+      <tr>
+        <th>Sl No</th>
+        <th>Date and Time</th>
+        <th>Payment From</th>
+        <th>Payment To</th>
+        <th>Mobile</th>
+        <th>Transfer Id</th>
+        <th>Amount</th>
+        <th>Type</th>
+        <th>Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="aReport in accountReportList">
+        <td>{{$index+1}}</td>
+        <td>{{aReport.TransferDate | date:'dd-MM-yyyy HH:mm:ss'}}</td>
+        <td>{{aReport.SenderId}}</td>
+        <td>{{aReport.RecieverId}}</td>
+        <td ng-if="curUser.Id==aReport.RecieverId">{{aReport.SenderMobileNo}}</td>
+        <td ng-if="curUser.Id==aReport.SenderId">{{aReport.RecieverMobileNo}}</td>
+        <td>{{aReport.TransferId}}</td>
+        <td>{{aReport.TransferAmount}}</td>
+        <td ng-if="curUser.Id==aReport.RecieverId">Credit</td>
+        <td ng-if="curUser.Id==aReport.SenderId">Debit</td>
+        <td ng-if="curUser.Id==aReport.RecieverId">{{aReport.RecieverBalance}}</td>
+        <td ng-if="curUser.Id==aReport.SenderId">{{aReport.SenderBalance}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>  
+<p ng-show="loadingAccRep" style="text-align:center;">Loading...</p>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="UTTAM,Telecom,Recharge">
+	<title>Uttam Telecom</title>
+  <link rel="icon" href="\img\favicon.jpg">
+
+	<!-- CSS -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+  <link rel="stylesheet" href="http://cdn.bootcss.com/animate.css/3.5.1/animate.css">
+  <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+<!-- 	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">  -->
+<!--  <link rel="stylesheet" href="libs/angular-toastr/dist/angular-toastr.css" /> -->
+ 
+
+	<!-- JS -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+  <script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-animate.js"></script>
+  <script src="https://rawgithub.com/cletourneau/angular-bootstrap-datepicker/master/dist/angular-bootstrap-datepicker.js" charset="utf-8"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<!--	<script src="libs/angular/angular.min.js"></script> 
+  <script src="libs/angular-route/angular-route.min.js"></script> 
+  <script type="text/javascript" src="libs/jquery/dist/jquery.min.js"></script>  
+  <script type="text/javascript" src="libs/bootstrap/dist/js/bootstrap.min.js"></script>  
+  <script src="libs/angular-toastr/dist/angular-toastr.tpls.js"></script> 
+  <script src="libs/angular-animate/angular-animate.js"></script>  
+  <script src="libs/angular-bootstrap-datepicker/dist/angular-bootstrap-datepicker.js"></script>
+-->
+ 
+	<!-- ANGULAR CUSTOM -->
+	<script src="js/controllers/retailerCtrl.js"></script>
+	<script src="js/controllers/dealerCtrl.js"></script>
+	<script src="js/controllers/masterDealerCtrl.js"></script>
+  <script src="js/controllers/adminCtrl.js"></script>
+  <script src="js/controllers/mainCtrl.js"></script>
+  <script src="js/controllers/globalCtrl.js"></script>
+	<script src="js/services/NerdService.js"></script>
+	<script src="js/services/serviceDB.js"></script>
+  <script src="js/appDirectives.js"></script>
+  <script src="js/appFilters.js"></script>
+	<script src="js/appRoutes.js"></script>
+	<script src="js/app.js"></script>
+</head>
+<body ng-app="sampleApp" ng-controller="globalCtrl">
+  
+<div class="container">
+
+ <div ng-show="showMainNav">  
+   <div>
+    <img src="..\img\Logo.jpG"  style="width:18vmin;height:18vmin;">
+  </div>
+    <!-- HEADER -->
+   
+   <nav class="navbar navbar-default myTopNav">
+    <div class="navbar-header myTopNav-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myMainNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+
+    </div>
+    <div class="collapse navbar-collapse myTopNav-collapse" id="myMainNavbar">
+      <ul class="nav navbar-nav navbar myTopNav-nav">
+    <!--    <li><a href="/home"><span class="glyphicon glyphicon-home navIcon"></span>Home</a></li>
+        <li><a href="/#"><span class="glyphicon glyphicon-credit-card navIcon"></span>How to Recharge</a></li>
+        <li><a href="#pricing"><span class="glyphicon glyphicon-home navIcon"></span>Our Bank</a></li>
+        <li><a href="/services"><span class="glyphicon glyphicon-list navIcon"></span>Services</a></li> -->
+           
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-download navIcon"></span>Download<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+             <form action="/downloadApk" method="GET">   
+               <button type="submit" class="btn btn-danger">Download Android APK</button>
+             </form>
+            </li>
+          </ul>
+        </li>
+    <!--    <li><a href="/about"><span class="glyphicon glyphicon-user navIcon"></span>About Us</a></li>
+        <li><a href="/contact"><span class="glyphicon glyphicon-phone-alt navIcon"></span>Contact Us</a></li>  -->
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in navIcon"></span>Login</a></li>
+     <!--   <li><a href="/signup">Sign Up</a></li>  -->
+      </ul>
+  </div>
+</nav>
+
+</div>
+
+    <!-- ANGULAR DYNAMIC CONTENT -->
+  <div ng-view ></div>
+  <div id="mydiv" ng-show="loadingImg" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:1000; opacity: .8;">
+    <img src="img\loading1.gif" class="ajax-loader" style="position: absolute;left: 0;top: 0;right:0;bottom: 0;margin: auto;height: 30vmin;width: 45vmin;display: block;" />
+  </div>
+  <nav class="navbar navbar-inverse navbar-bottom footerbar" ng-show="showMainNav" style="background-color:#DC143C;margin-bottom:0px;border:none;">
+  
+    © 2017 UTTAM TELECOM, All Rights Reserved.
+  </nav>
+</div>
+</body>
+</html>

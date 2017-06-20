@@ -1,0 +1,53 @@
+
+<div class="well well-sm listHeader">List of Master Dealers</div>
+<div class="table-responsive" style="max-height:60vh;overflow: auto;" when-scrolled="loadMasterDealers()"> 
+<table class="table table-fixed table-bordered">
+    <thead class="tableList">
+      <tr>
+        <th>Sl No</th>
+        <th>User Id</th>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>State</th>
+        <th>City</th>
+        <th>Email ID</th>
+        <th>Balance</th>
+        <th>Login</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+  <!--    
+      <tr>
+        <td>1</td>
+        <td>56779</td>
+        <td>John</td>
+        <td>9876654321</td>
+        <td>Karnataka</td>
+        <td>Bangalore</td>
+        <td>john@example.com</td>
+        <td>100</td>
+        <td>Active</td>
+        <td>hbhscnjs</td>
+        <td><span class="btn glyphicon glyphicon-pencil"></span></td>
+        <td><span class="btn glyphicon glyphicon-trash"></span></td>
+      </tr>
+  -->  
+      <tr ng-repeat="mdealer in mDealersList">
+        <td>{{$index+1}}</td> 
+        <td>{{mdealer.Id}}</td> 
+        <td>{{mdealer.Name}}</td>
+        <td>{{mdealer.Mobile}}</td>  
+        <td>{{mdealer.State}}</td>
+        <td>{{mdealer.City}}</td>  
+        <td>{{mdealer.EmailId}}</td>  
+        <td>{{mdealer.Balance}}</td>
+        <td ng-style="'Online' == mdealer.LoginStatus ? {color:'Green'} : {color:'Red'}">{{mdealer.LoginStatus}}</td>
+        <td><a href="#" title="Money Transfer" class="btn glyphicon glyphicon-transfer" ng-click="transferMoneyView(mdealer)"></a>|<a href="#" title="Revert Last Transaction" class="btn glyphicon glyphicon-repeat" ng-click="revertTransaction(mdealer.Id)"></a>|<a href="#" title="Edit" class="btn glyphicon glyphicon-pencil" ng-click="editMDealer(mdealer)"></a>|<a href="#" title="Delete" class="btn glyphicon glyphicon-trash" ng-click="deleteMDealer(mdealer, $index)"></a></td>              
+      </tr> 
+    </tbody> 
+  </table>
+  
+ </div>
+<p ng-show="loadingMD" style="text-align:center;">Loading...</p> 
+ 

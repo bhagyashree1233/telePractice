@@ -1,0 +1,77 @@
+
+         <div class="well well-sm listHeader">All Recharge Report</div>
+            <p ng-bind="allReportErr" style="color:red;"></p>
+            <div class="row">
+            <form class="form">
+                <div class="form-group col-sm-2">
+                    <label for="usr">From Date: </label>
+                   <!-- <input class="form-control" type="date" ng-model="allReport.FromDate" required></input>  -->
+                    <input type="text" class="form-control" datepicker="" placeholder="Select From Date" ng-change="allRepDateChanged()" ng-model="allReport.FromDate" required /> 
+                </div>
+                
+                 <div class="form-group col-sm-2">
+                    <label for="usr">TO Date: </label>
+               <!--      <input class="form-control" type="date" ng-model="allReport.ToDate" required></input>  -->
+                     <input type="text" class="form-control" datepicker="" placeholder="Select To Date" ng-change="allRepDateChanged()" ng-model="allReport.ToDate" required /> 
+                </div>
+                <div class="form-group col-sm-2">
+                    <label for="sel1">Operator:</label>
+                      <select class="selectpicker form-control" ng-change="allRepDateChanged()" ng-options="company.id as company.name for company in allcompanies track by company.id" ng-model="allReport.CompanyCode">
+                         <option value="">All</option>
+                      </select>
+                </div>
+                <div class="form-group col-sm-2">
+                    <label for="sel1">Status:</label>
+                       <select class="form-control" id="sel1" ng-change="allRepDateChanged()" ng-model="allReport.Status">  
+                           <option value="">All</option>
+                           <option>Success</option>
+                           <option>Failure</option>
+                           <option>Pending</option>
+                       </select>
+                </div>
+                <div class="form-group col-sm-2">
+                      <label for="sel1">Num/id:</label>
+                       <input type="text" class="form-control"  ng-change="allRepDateChanged()" id="usr" ng-model="allReport.Number">
+                </div>
+                <div class="form-group col-sm-1">
+                      <label for="sel1">Data:</label>
+                         <select class="form-control" id="sel1" ng-model="allReport.Data">
+                           <option>Live</option>
+                           <option>Archieve</option>
+                         </select>
+                </div>
+                <div class="form-group col-sm-1">
+                      <input type="submit" value="Search" class="btn btn-success" ng-click="getAllReports(allReport)"></input>
+                </div>
+            </form>
+          </div>
+
+ <div class="table-responsive" style="max-height:52vh;overflow: auto;" when-scrolled="getAllReports()">
+   <table class="table table-bordered">
+    <thead class="tableList">
+      <tr>
+        <th>Id</th>
+        <th>Company</th>
+        <th>Mobile No</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Date Time</th>
+        <th>Order Id</th>
+        <th>Transaction Id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="report in allReportList">
+        <td>{{$index+1}}</td>
+        <td>{{report.Company}}</td>
+        <td>{{report.MobileNo}}</td>
+        <td>{{report.RechargeAmount}}</td>
+        <td>{{report.Status}}</td>
+        <td> {{ report.RechargeDate | date : "MMM d, y h:mm:ss a" : "IST" }}</td>
+        <td>{{report.OrderId}}</td>
+        <td>{{report.TransactionId}}</td>
+      </tr>
+    </tbody>  
+  </table>
+</div>
+<p ng-show="loadingAllRep" style="text-align:center;">Loading...</p>

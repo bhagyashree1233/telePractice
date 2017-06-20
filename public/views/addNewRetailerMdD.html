@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div class="well well-sm listHeader">Retailer Registration Form
+    </div> 
+    <p style="font-size:18px;">Personal Information</p>
+    <hr>
+    
+<div class="container">
+  
+  <form class="form-horizontal"  ng-submit="addNewRetailer(newRetailer)" >
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Agent Name"><sup>*</sup>Agent Name:</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" ng-model="newRetailer.Name" limit-char limit="50" id="Agent Name"  name="Agent Name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Postal Address"><sup> *</sup>Postal Address:</label>
+      <div class="col-sm-3"> 
+          <textarea class="form-control"  ng-model="newRetailer.Address" limit-char limit="255"></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="State"><sup> *</sup>State:</label>
+      <div class="col-sm-3"> 
+  <!--      
+    <select class="selectpicker form-control" ng-model="newRetailer.State"> 
+            <option>select state</option>
+            <option>karnataka</option>
+    </select>
+   -->
+
+    <select class="selectpicker form-control" ng-model="newRetailer.State" ng-change="loadCities(newRetailer.State)">
+      <option value="">--select state--</option>
+      <option ng-repeat="state in statelist">{{state}}</option>
+    </select>
+
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Mobile No"><sup>*</sup>Mobile No:</label>
+      <div class="col-sm-3">
+        <input type="tel" class="form-control" ng-model="newRetailer.Mobile" numbers-only limit-char limit="10" id="mobileNo" name="mobileNo">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Agent Business Name">Agent Business Name:</label>
+      <div class="col-sm-3"> 
+    <select class="selectpicker form-control" ng-model="newRetailer.RetailerType">
+            <option value="">--- select here ---</option>  
+            <option ng-repeat="retailerType in retailerTypeList">{{retailerType.Name}}</option>
+    </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Pan No">Pan No:</label>
+      <div class="col-sm-3">
+        <input type="Pan No" class="form-control" ng-model="newRetailer.PanNo" numbers-only limit-char limit="15" id="Pan No"  name="Pan No">
+      </div>
+    </div>
+    <div class="form-group" ng-if="showParentSelect">
+      <label class="control-label col-sm-2" for="Select Parent"><sup>*</sup>Select Parent Dealer:</label>
+       <div  class="col-sm-3"> 
+        <select class="selectpicker form-control" ng-options="dealer.Id as dealer.Name for dealer in dealersList track by dealer.Id" ng-model="newRetailer.ParentDealerId">
+          <option value="">--- select here ---</option>
+        </select>
+       </div>
+    </div>
+ <!--   
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Select Parent"><sup>*</sup>Select Parent Master Dealer:</label>
+       <div  class="col-sm-3"> 
+        <select class="selectpicker form-control" ng-model="newDealer.parentMDName">
+            <option>-select-</option>
+            <option ng-repeat="mdealer in mDealersList" ng-click="newDealer.ParentMasterDealerId = mdealer.Id">{{mdealer.Name}}</option>
+        </select>
+       </div>
+    </div>
+ -->
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Pin Code"><sup> *</sup>Pin Code:</label>
+      <div class="col-sm-3">
+        <input type="tel" class="form-control" id="pinCode" ng-model="newRetailer.PinCode" numbers-only limit-char limit="8" name="Pin Code">
+      </div>
+    </div>
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="City/District">City/District:</label>
+      <div class="col-sm-3" > 
+    <select class="selectpicker form-control" ng-model="newRetailer.City" >
+       <option value="">--- select here ---</option>
+       <option ng-repeat="city in cities">{{city.city}}</option>
+    </select>
+   
+      </div>
+    </div>
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="Landline">Landline:</label>
+      <div class="col-sm-3">
+        <input type="tel" class="form-control" ng-model="newRetailer.LandLine" numbers-only limit-char limit="15" id="Pan No"  name="Landline">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Email"><sup> * </sup>Email:</label>
+      <div class="col-sm-3">
+        <input type="Email" class="form-control" ng-model="newRetailer.EmailId" limit-char limit="50" id="Email"  name="Email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Contact Person"><sup> * </sup>Contact Person:</label>
+      <div class="col-sm-3">
+        <input type="Contact Person" class="form-control" ng-model="newRetailer.ContactPerson" limit-char limit="50" id="Contact Person"  name="Contact Person">
+      </div>
+    </div>
+<p style="font-size:20px">Scheme Details</p>
+    <hr>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Scheme">Scheme:</label>
+      <div class="col-sm-3"> 
+    <select class="selectpicker form-control" ng-model="newRetailer.Scheme" >
+           <option value="">--- select scheme ---</option>      
+            <option>Retailer Scheme</option>
+            <option>Personal retailer</option>
+            
+    </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Amount">Amount:</label>
+      <div class="col-sm-3">
+        <p>{{newRetailer.Balance}}</p>
+      </div>
+    </div>
+    <div class="form-group" ng-if="!editMode">
+      <label class="control-label col-sm-2" for="Opening Balance">Opening Balance:</label>
+      <div class="col-sm-3">
+        <input type="Opening Balance" class="form-control" ng-model="newRetailer.Balance" numbers-only limit-char limit="13" id="Opening Balance"  name="Opening Balance">
+      </div>
+    </div>
+    <div class="form-group" ng-if="!editMode">
+      <label class="control-label col-sm-2" for="Opening Balance">Enter Password:</label>
+      <div class="col-sm-3">
+        <input type="password" class="form-control"  ng-model="newRetailer.Password" limit-char limit="25" id="password"  name="password">
+      </div>
+    </div>
+    <div class="form-group" ng-if="!editMode">
+      <label class="control-label col-sm-2" for="Opening Balance">Confirm Password:</label>
+      <div class="col-sm-3">
+        <input type="password" class="form-control"  ng-model="newRetailer.Cpassword" limit-char limit="25" id="cpassword"  name="cpassword">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button><span><button type="Cancel" class="btn btn-default" ng-click="newRetailer={};getListOfRetailers('listOfRetailerD');">Cancel</button></span>
+      </div>
+    </div>
+    <span class="star" id="retailerAddError"> {{retailerAddErrMsg}}</span>
+<p>The field marked with * are mandatory.</p>
+  </form>
+</div>   
+
+</body>
+</html>

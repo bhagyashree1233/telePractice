@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <div class="well well-sm listHeader">Add new scheme</div>
+  <form class="form-horizontal" >
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Scheme Name">Scheme Name:</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" ng-model="newScheme.Name" limit-char limit="50" name="name" required>
+     </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Scheme Type">Scheme Type:</label>
+      <div class="col-sm-3">
+       <!-- <input type="text" class="form-control" ng-model="newScheme.Type" limit-char limit="25" name="type" required>-->
+      <select class="form-control" id="sel1" ng-model="newScheme.Type" required>
+        <option value="">---select---</option>
+        <option >masterdealer</option>
+        <option >dealer</option>
+        <option >retailer</option>
+      </select>
+     </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-success" ng-click="addNewScheme(newScheme)">Add</button><span><button type="Cancel" class="btn btn-danger" ng-click="newScheme={};">Cancel</button></span>
+      </div>
+    </div>
+  </form>
+
+  <div class="well well-sm listHeader">List of available Schemes</div>
+
+  <div class="table-responsive" style="max-height:52vh;overflow: auto;">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Sl No</th>
+        <th>Scheme Name</th>
+        <th>Type</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody ng-init="schemeEditMode=false">
+      <tr ng-repeat="scheme in allSchemeList">
+        <td>{{$index+1}}</td>
+        <td ng-show="schemeEditMode===false">{{scheme.Name}}</td>
+        <td ng-show="schemeEditMode===$index"><input type="text" ng-model="scheme.Name"></td>
+        <td>{{scheme.Type}}</td>
+        <td><span class="btn btn-success" ng-show="schemeEditMode===$index" ng-click="editScheme(scheme);schemeEditMode=false;" >Edit</span>
+            <span class="btn btn-danger" ng-show="schemeEditMode===$index" ng-click="scheme.Name=allSchemeList[$index].Name;schemeEditMode=false;" >Cancel</span>
+            <span class="btn glyphicon glyphicon-pencil" ng-show="schemeEditMode===false" ng-click="schemeEditMode=$index;"></span>
+            <span class="btn glyphicon glyphicon-trash"  ng-show="schemeEditMode===false" ng-click="deleteScheme(scheme, $index)"></span>
+       </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  
+
+</body>
+</html>

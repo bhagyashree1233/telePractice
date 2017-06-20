@@ -1,0 +1,44 @@
+<div class="well well-sm listHeader">All Complains</div>
+
+<div class="table-responsive"  style="max-height:58vh;overflow: auto;" when-scrolled="loadComplains()">
+<table class="table table-bordered">
+    <thead>
+      <tr style="background:orange">
+        <th>Complain Id</th>
+        <th>complainer Id</th>
+        <th>Message</th>
+        <th>Order ID</th>
+        <th>Number</th>
+        <th>Company</th>
+        <th>Recharge Type</th>
+        <th>Amount</th>
+        <th>Recharge Status</th>
+        <th>Recharge Date</th>
+        <th>Solve Date</th>
+        <th>Response Message</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="complain in complainsList">
+        <td>{{complain.ComplainId}}</td>
+        <td>{{complain.RetailerId}}</td>
+        <td>{{complain.Message}}</td>
+        <td ng-if="complain.OrderId">{{complain.OrderId}}</td><td ng-if="!complain.OrderId">--</td>
+        <td ng-if="complain.Number">{{complain.Number}}</td><td ng-if="!complain.Number">--</td>
+        <td ng-if="complain.Company">{{complain.Company}}</td><td ng-if="!complain.Company">--</td>
+        <td ng-if="complain.RechargeType">{{complain.RechargeType}}</td><td ng-if="!complain.RechargeType">--</td>
+        <td ng-if="complain.RechargeAmount">{{complain.RechargeAmount}}</td><td ng-if="!complain.RechargeAmount">--</td>
+        <td ng-if="complain.RechargeStatus">{{complain.RechargeStatus}}</td><td ng-if="!complain.RechargeStatus">--</td>
+        <td ng-if="complain.RechargeDate">{{complain.RechargeDate | date:'dd-MM-yyyy HH:mm:ss'}}</td><td ng-if="!complain.RechargeDate">--</td>
+        <td ng-if="complain.SolveDate">{{complain.SolveDate | date:'dd-MM-yyyy HH:mm:ss'}}</td><td ng-if="!complain.SolveDate"></td>
+        <td>{{complain.ResponseMessage}}</td>
+        <td>{{complain.Status}}</td>
+        <td><a href="" ng-click="respondComplain(complain)">Respond</a></td>
+      </tr>
+    </tbody>
+    
+  </table>
+</div>           
+<p ng-show="loadingComplains" style="text-align:center">Loading...</p>

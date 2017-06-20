@@ -1,0 +1,13 @@
+{
+  "name": "angular",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "angular": "^1.6.1",
+    "angular-route": "^1.6.1",
+    "jquery": "^3.2.1",
+    "angular-toastr": "latest",
+    "angular-animate": "latest",
+    "angular-bootstrap": "latest"
+  }
+}
