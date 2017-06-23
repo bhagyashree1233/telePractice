@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -22,6 +22,7 @@
 	<!-- JS -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
@@ -39,7 +40,7 @@
 -->
  
 	<!-- ANGULAR CUSTOM -->
-	<script src="js/controllers/retailerCtrl.js"></script>
+	<!--<script src="js/controllers/retailerCtrl.js"></script>
 	<script src="js/controllers/dealerCtrl.js"></script>
 	<script src="js/controllers/masterDealerCtrl.js"></script>
   <script src="js/controllers/adminCtrl.js"></script>
@@ -47,12 +48,22 @@
   <script src="js/controllers/globalCtrl.js"></script>
 	<script src="js/services/NerdService.js"></script>
 	<script src="js/services/serviceDB.js"></script>
-  <script src="js/appDirectives.js"></script>
-  <script src="js/appFilters.js"></script>
-	<script src="js/appRoutes.js"></script>
-	<script src="js/app.js"></script>
+  <script src="js/app/appDirectives.js"></script>
+  <script src="js/app/appFilters.js"></script>
+	<script src="js/app/appRoutes.js"></script>
+	<script src="js/app/app.js"></script>-->
+<!--Angular Js-->
+
+<script src="js/controller/adminCtrl.js"></script>
+<script src="js/controller/loginCtrl.js"></script>
+<script src="js/controller/globalCtrl.js"></script>
+<script src="js/service/serviceUrl.js"></script>
+<script src="js/app/appRoutes.js"></script>
+<script src="js/app/app.js"></script>
+
+
 </head>
-<body ng-app="sampleApp" ng-controller="globalCtrl">
+<body ng-app="telecom" ng-controller="globalCtrl">
   
 <div class="container">
 
@@ -72,11 +83,11 @@
 
     </div>
     <div class="collapse navbar-collapse myTopNav-collapse" id="myMainNavbar">
-      <ul class="nav navbar-nav navbar myTopNav-nav">
-    <!--    <li><a href="/home"><span class="glyphicon glyphicon-home navIcon"></span>Home</a></li>
+     <!-- <ul class="nav navbar-nav navbar myTopNav-nav">
+     <li><a href="/home"><span class="glyphicon glyphicon-home navIcon"></span>Home</a></li>
         <li><a href="/#"><span class="glyphicon glyphicon-credit-card navIcon"></span>How to Recharge</a></li>
         <li><a href="#pricing"><span class="glyphicon glyphicon-home navIcon"></span>Our Bank</a></li>
-        <li><a href="/services"><span class="glyphicon glyphicon-list navIcon"></span>Services</a></li> -->
+        <li><a href="/services"><span class="glyphicon glyphicon-list navIcon"></span>Services</a></li> s
            
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-download navIcon"></span>Download<span class="caret"></span></a>
@@ -88,13 +99,16 @@
             </li>
           </ul>
         </li>
-    <!--    <li><a href="/about"><span class="glyphicon glyphicon-user navIcon"></span>About Us</a></li>
+     <li><a href="/about"><span class="glyphicon glyphicon-user navIcon"></span>About Us</a></li>
         <li><a href="/contact"><span class="glyphicon glyphicon-phone-alt navIcon"></span>Contact Us</a></li>  -->
-        <li><a href="/login"><span class="glyphicon glyphicon-log-in navIcon"></span>Login</a></li>
-     <!--   <li><a href="/signup">Sign Up</a></li>  -->
-      </ul>
+        <!--<li><a href="/login"><span class="glyphicon glyphicon-log-in navIcon"></span>Login</a></li>-->
+     <!--   <li><a href="/signup">Sign Up</a></li> 
+      </ul>-->
+      
+
   </div>
 </nav>
+<a href="/login"><span class="glyphicon glyphicon-log-in navIcon"></span>Login</a></li>
 
 </div>
 
